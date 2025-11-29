@@ -1,0 +1,40 @@
+# backend/docker-compose.yml
+version: "3.8"
+services:
+  mongo:
+    image: mongo:6
+    container_name: cinema_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+
+  backend:
+    build: .
+    env_file:
+      - .env
+    container_name: cinema_backend
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      - PORT=3001
+      - MONGO_URI=mongodb://mongo:27017/cinemovies_db
+      - JWT_SECRET=um_segredo_muito_forte_e_aleatorio_para_jwt
+      - JWT_EXPIRES_IN=2h
+      - POOL_MIN=2
+      - POOL_MAX=10
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/usr/src/app
+    command: sh -c "npm run seed && npm run start"
+volumes:
+  mongo_data:
