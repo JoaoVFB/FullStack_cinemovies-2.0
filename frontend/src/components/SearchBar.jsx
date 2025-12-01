@@ -11,7 +11,7 @@ function SearchBar() {
   const handleSearch = async (e) => {
     e.preventDefault();
 
-    // ✅ Validação antes de enviar para a API
+    //Validação antes de enviar para a API
     if (!state.query.trim()) {
       dispatch({ type: "SEARCH_ERROR", payload: "Por favor, digite o nome de um filme para buscar." });
       dispatch({ type: "CLEAR_RESULTS" });

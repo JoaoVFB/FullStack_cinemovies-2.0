@@ -1,4 +1,4 @@
-// src/routes/auth.routes.js
+
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -7,10 +7,7 @@ import { loginSchema } from "../validators/auth.validator.js";
 
 const router = Router();
 
-/**
- * POST /api/auth/login
- * body: { email, password }
- */
+
 router.post("/login", async (req, res) => {
   const parse = loginSchema.safeParse(req.body);
   if (!parse.success) {

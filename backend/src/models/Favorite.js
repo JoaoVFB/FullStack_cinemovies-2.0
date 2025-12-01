@@ -1,4 +1,4 @@
-// src/models/Favorite.js
+
 import mongoose from "mongoose";
 
 const MovieInfoSchema = new mongoose.Schema({

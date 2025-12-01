@@ -1,4 +1,4 @@
-// src/routes/favorites.routes.js
+
 import { Router } from "express";
 import axios from "axios";
 import Favorite from "../models/Favorite.js";
@@ -18,7 +18,7 @@ router.post("/", auth, async (req, res) => {
   console.log("BODY RECEBIDO:", req.body);
 
   try {
-    // 1. Validação com Zod
+    
     const parsed = addFavoriteSchema.safeParse(req.body);
     console.log("RESULTADO DO ZOD:", parsed);
 
@@ -47,7 +47,7 @@ router.post("/", auth, async (req, res) => {
     const response = await axios.get(tmdbUrl);
     const movieData = response.data;
 
-    // 4. Criar o favorito
+    // Criar o favorito
     const favorite = await Favorite.create({
       user: req.user._id,
       movie: {

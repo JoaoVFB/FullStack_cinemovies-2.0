@@ -10,6 +10,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 //components
+import LoginPage from "./components/LoginPage";
+import { PrivateRoute } from "./components/PrivateRoute";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -101,7 +103,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/favoritos" element={<PrivateRoute><FavoritesPage /></PrivateRoute>} />
         <Route path="/*" element={<AppContent />} />
       </Routes>
     </Router>

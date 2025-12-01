@@ -1,4 +1,4 @@
-// src/seeds/seed.js
+
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -14,7 +14,7 @@ async function run() {
 
     console.log(" Executando Seed...");
 
-    // Limpa somente usuários (não temos mais tabela de filmes)
+   
     await User.deleteMany({});
 
     const passwordHash = await bcrypt.hash("Senha123!", 10);

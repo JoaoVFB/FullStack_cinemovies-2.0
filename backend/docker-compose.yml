@@ -1,4 +1,4 @@
-# backend/docker-compose.yml
+
 version: "3.8"
 services:
   mongo:
@@ -9,11 +9,7 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
-    healthcheck:
-      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
-      interval: 5s
-      timeout: 10s
-      retries: 10
+    
 
   backend:
     build: .
@@ -22,13 +18,10 @@ services:
     container_name: cinema_backend
     restart: unless-stopped
     depends_on:
-      mongo:
-        condition: service_healthy
+      - mongo
     environment:
       - PORT=3001
       - MONGO_URI=mongodb://mongo:27017/cinemovies_db
-      - JWT_SECRET=um_segredo_muito_forte_e_aleatorio_para_jwt
-      - JWT_EXPIRES_IN=2h
       - POOL_MIN=2
       - POOL_MAX=10
     ports:

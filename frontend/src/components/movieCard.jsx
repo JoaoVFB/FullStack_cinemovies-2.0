@@ -1,21 +1,30 @@
 import './movieCard.css';
 import { useState } from 'react';
 import { useFavorites } from "../contexts/FavoritesContext";
+import { useAuth } from "../contexts/AuthContext";
 
 function MovieCard({ movie }) {
-   const { state, dispatch } = useFavorites();
-   const isFavorite = state.favorites.some((fav) => fav.id === movie.id);
+   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const { user } = useAuth();
+   const isFav = isFavorite(movie.id);
 
-   const toggleFavorite = () => {
-    if (isFavorite) {
-      dispatch({ type: "REMOVE_FAVORITE", payload: movie.id });
+   const toggleFavorite = (e) => {
+    e.stopPropagation(); 
+
+    if (!user) {
+      alert("Você precisa estar logado para adicionar favoritos!");
+      return;
+    }
+
+    if (isFav) {
+      removeFavorite(movie.id);
     } else {
-      dispatch({ type: "ADD_FAVORITE", payload: movie });
+      addFavorite(movie.id);
     }
   };
 
   return (
-    <div className="movie-card" onClick={toggleFavorite}>
+    <div className="movie-card">
       <img src={movie.poster} alt={movie.title} className="movie-poster" />
       <div className="movie-overlay">
         <h3>{movie.title}</h3>
@@ -23,9 +32,9 @@ function MovieCard({ movie }) {
         <p className="year">{movie.year}</p>
         <button
         onClick={toggleFavorite}
-        className={`fav-btn ${isFavorite ? "active" : ""}`}
+        className={`fav-btn ${isFav ? "active" : ""}`}
       >
-        {isFavorite ? "❤️ Remover" : "🤍 Favoritar"}
+        {isFav ? "❤️ Remover" : "🤍 Favoritar"}
       </button>
       </div>
     </div>

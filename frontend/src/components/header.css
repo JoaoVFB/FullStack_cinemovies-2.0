@@ -56,4 +56,17 @@
 
 .favoritos {
     padding-left: 8px;
-};
+}
+
+.logout-button {
+    background: #60058593;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    background: #48036393;
+}

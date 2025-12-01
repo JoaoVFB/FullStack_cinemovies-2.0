@@ -22,7 +22,7 @@
 }
 
 .search-form button {
-  background-color: #60058593;
+  background-color: #500a79;
   border: none;
   padding: 10px 14px;
   border-radius: 6px;
@@ -32,7 +32,7 @@
 }
 
 .search-form button:hover {
-  background-color: #500a79;
+  background-color: #60058593;
 }
 
 .search-results {
