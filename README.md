@@ -74,6 +74,14 @@ O frontend estará acessível em `http://localhost:5173`.
 
 ---
 
+## Login
+Acesse a aba de Login e insira os seguintes dados:
+```
+Email: admin@example.com
+
+Senha: Senha123!
+```
+
 ## 🔧 Configuração de Proxy (CORS)
 Para evitar problemas de CORS em diferentes ambientes (como Linux/Ubuntu), o projeto utiliza o proxy do Vite. As requisições feitas para `/api` no frontend são automaticamente redirecionadas para o backend na porta `3001`.
 
@@ -82,6 +90,4 @@ Para evitar problemas de CORS em diferentes ambientes (como Linux/Ubuntu), o pro
 ## 📝 Licença
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
----
 
-Desenvolvido com ❤️ por [Seu Nome]
