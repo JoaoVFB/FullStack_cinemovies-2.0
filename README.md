@@ -74,7 +74,7 @@ O frontend estará acessível em `http://localhost:5173`.
 
 ---
 
-## Login
+## 🔑 Login
 Acesse a aba de Login e insira os seguintes dados:
 ```
 Email: admin@example.com
