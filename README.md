@@ -85,9 +85,5 @@ Senha: Senha123!
 ## 🔧 Configuração de Proxy (CORS)
 Para evitar problemas de CORS em diferentes ambientes (como Linux/Ubuntu), o projeto utiliza o proxy do Vite. As requisições feitas para `/api` no frontend são automaticamente redirecionadas para o backend na porta `3001`.
 
----
-
-## 📝 Licença
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 
